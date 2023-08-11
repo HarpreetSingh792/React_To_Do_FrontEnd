@@ -31,6 +31,7 @@ const Login = () => {
       label.style.top = "14px";
       label.style.left = "14px";
       label.style.fontSize = "1rem";
+      label.style.zIndex=7;
     } else {
       label.style.top = "-14px";
       label.style.left = "10px";

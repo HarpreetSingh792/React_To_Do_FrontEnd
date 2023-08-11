@@ -8,6 +8,52 @@ $font: "Rubik", sans-serif;
   align-items: $y-align;
 }
 
+
+@mixin navigation-linkS($display:flex,$width:45vw,$x-Axis:space-evenly){
+  margin: 0 12px;
+  display: $display;
+  justify-content: $x-Axis;
+  align-items: center;
+  width: $width;
+
+  & > a {
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--text-color);
+    &:hover {
+      transition: all 0.1s;
+      height: 2rem;
+      background: var(--hover-light-background);
+      color: var(--hover-light-color);
+      border-radius: 7px;
+      padding: 0 0.7rem;
+      border: 2px solid var(--hover-light-background);
+    }
+    &.active {
+      height: 2rem;
+      background: var(--hover-light-background);
+      color: var(--hover-light-color);
+      border-radius: 7px;
+      padding: 0 0.7rem;
+      border: 2px solid var(--hover-light-background);
+    }
+  }
+  & > button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+
+}
+
+
+
 @mixin form($width:60vw,$height:80vh)
 {
   backdrop-filter: blur(10px);

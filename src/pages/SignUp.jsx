@@ -121,7 +121,7 @@ const SignUp = () => {
         <section className="btn-link">
           <button type="submit">Sign Up</button>
           <p>or</p>
-          <Link to="/login">Already a user.Sign In</Link>
+          <Link to="/login">Already a user. Sign In</Link>
         </section>
       </form>
     </div>

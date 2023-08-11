@@ -1,0 +1,23 @@
+.loading-wrapper
+{
+    display: grid;
+    height: 87.7vh;
+    justify-content: center;
+    align-items: center;
+    
+    .loader
+    {
+        display: grid;
+        place-items: center;
+    }
+
+    .book-gif{
+        width: 80px;
+        height: 80px;
+    }
+
+    .circles-gif{
+        width: 50px;
+        height: 50px;
+    }
+}

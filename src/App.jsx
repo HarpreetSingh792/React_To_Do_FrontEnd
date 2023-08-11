@@ -14,6 +14,15 @@ function App() {
   const [userData,setUserData]= useState({});
   const { setIsAuthenticated ,isLoading, setIsLoading } = useContext(Context);
   useEffect(() => {
+    const getTheme = localStorage.getItem("theme");
+    if(getTheme=='dark'){
+      document.querySelector("body").classList.add("dark");
+      document.querySelector("body").classList.remove("light");
+    }
+    else{
+      document.querySelector("body").classList.add("light");
+      document.querySelector("body").classList.remove("dark");
+    }
     const getProfile = async () => {
        setIsLoading(true);
       try {
