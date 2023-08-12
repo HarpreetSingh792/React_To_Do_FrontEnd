@@ -48,7 +48,7 @@ export const Navbar = () => {
           <div className="logo">
             <NavLink to="/">
               <img
-                src={localStorage.getItem("theme") == "light" ? Logo : DarkLogo}
+                src={localStorage.getItem("theme") == "dark" ? DarkLogo : Logo}
                 width="70px"
                 height="70px"
                 alt="logo-img"
@@ -109,15 +109,15 @@ export const Navbar = () => {
                       // console.log(document.querySelector("body"))  //For debbuging purpose....
                       darkTheme
                         ? document
-                            .querySelector("#root")
+                            .querySelector("body")
                             .classList.remove("light")
                         : document
-                            .querySelector("#root")
+                            .querySelector("body")
                             .classList.add("light");
                       darkTheme
-                        ? document.querySelector("#root").classList.add("dark")
+                        ? document.querySelector("body").classList.add("dark")
                         : document
-                            .querySelector("#root")
+                            .querySelector("body")
                             .classList.remove("dark");
                     }}
                   >
@@ -168,11 +168,11 @@ export const Navbar = () => {
                 : localStorage.setItem("theme", "light");
                 // console.log(document.querySelector("body"))  //For debbuging purpose....
                 darkTheme
-                  ? document.querySelector("#root").classList.remove("light")
-                  : document.querySelector("#root").classList.add("light");
+                  ? document.querySelector("body").classList.remove("light")
+                  : document.querySelector("body").classList.add("dark");
                 darkTheme
-                  ? document.querySelector("#root").classList.add("dark")
-                  : document.querySelector("#root").classList.remove("dark");
+                  ? document.querySelector("body").classList.add("dark")
+                  : document.querySelector("body").classList.remove("light");
               }}
             >
               {darkTheme ? <FaRegLightbulb /> : <FaLightbulb />}

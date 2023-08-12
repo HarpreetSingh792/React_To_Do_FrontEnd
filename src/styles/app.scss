@@ -1,7 +1,7 @@
 @import "features.scss";
 @import "loader.scss";
 :root {
-  --primary-color: white;
+  --primary-color: rgba(255, 255, 255, 0.4);
   --hover-light-background: #35a29f;
   --hover-light-color: white;
   --text-color: #272727;
@@ -35,7 +35,7 @@
   --slide-nav-transparent: rgba(3, 15, 58, 0.9);
 }
 .light {
-  --primary-color: white;
+  --primary-color: rgba(255, 255, 255, 0.4);
   --hover-light-background: #35a29f;
   --hover-light-color: white;
   --text-color: #272727;
@@ -48,6 +48,10 @@
   --task-cards-border: whitesmoke;
 }
 
+body {
+  height: 100vh;
+  background-color: var(--primary-color);
+}
 .container {
   min-height: 87.8vh;
   z-index: 1;
@@ -121,28 +125,26 @@ button > svg {
 }
 
 .form-class {
-  box-sizing: border-box;
-  overflow: hidden;
   position: relative;
   background: var(--form-color);
   @include flex(center, center);
   width: 100vw;
   height: 87.7vh;
   .blob {
-    @include blob(move);
+    @include blob($anim-name: move);
     &:hover {
       @include blob-hover;
     }
   }
 
   .blob1 {
-    @include blob(move1);
+    @include blob($anim-name: move1);
     &:hover {
       @include blob-hover;
     }
   }
   .blob2 {
-    @include blob(move2);
+    @include blob($anim-name: move2);
     &:hover {
       @include blob-hover;
     }
@@ -338,7 +340,7 @@ form {
       align-items: center;
       height: 30px;
       width: 40px;
-      transition: all 2s;
+      transition: smooth 2s;
       $initialWidth: 5;
       @for $i from 1 through 3 {
         .nav-hamburger:nth-child(#{$i}) {
@@ -365,7 +367,7 @@ form {
       right: 0;
       z-index: 5;
       width: 90vw;
-      height: 90vh;
+      height: 92vh;
       background-color: var(--slide-nav-transparent);
       & > button {
         position: absolute;
@@ -406,11 +408,25 @@ form {
       }
     }
   }
-
+  .blur {
+    display: none;
+  }
+  .back-blob {
+    display: none;
+  }
   .form-class {
-    overflow: -moz-hidden-unscrollable;
-    height: 99vmax;
+    overflow: hidden;
     width: 100vw;
+    .blob {
+      @include blob(450px, 450px, move);
+    }
+
+    .blob1 {
+      @include blob(450px, 450px, move1);
+    }
+    .blob2 {
+      @include blob(450px, 450px, move2);
+    }
   }
   form {
     height: 70vh;
@@ -471,8 +487,26 @@ form {
   }
 }
 @media (max-width: 756px) {
-  .task-cards {
+  .navigation-links-hamburger {
+    .slider-nav {
+      height: 87vh;
+    }
+  }
+  .form-class {
+    overflow: hidden;
+    width: 100vw;
+    .blob {
+      @include blob(250px, 250px, move);
+    }
 
+    .blob1 {
+      @include blob(350px, 350px, move1);
+    }
+    .blob2 {
+      @include blob(250px, 250px, move2);
+    }
+  }
+  .task-cards {
     width: 99vw;
     .cards {
       & > .card-text {

@@ -88,10 +88,10 @@ $font: "Rubik", sans-serif;
   border: darken($bg-color, 10);
 }
 
-@mixin blob($anim-name) {
+@mixin blob($width:500px,$height:500px,$anim-name) {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: $width;
+  height:$height;
   background: linear-gradient(
     180deg,
     rgba(47, 184, 255, 0.42) 31.77%,
@@ -125,60 +125,60 @@ $font: "Rubik", sans-serif;
   }
 }
 
-@keyframes move {
+@keyframes move{
   from {
-    transform: translate(-100px, -50px) rotate(-90deg);
+    transform: translate(-10vw, 5vh) rotate(-90deg);
     border-radius: 32% 96% 84% 34% / 64% 71% 54% 25%;
   }
 
   to {
-    transform: translate(500px, -200px) rotate(-200deg);
+    transform: translate(50vw, -20vh) rotate(-200deg);
     border-radius: 92% 56% 79% 47% / 64% 41% 74% 69%;
   }
 }
 
 @-webkit-keyframes move1 {
   from {
-    transform: translate(-100px, -50px) rotate(-90deg);
+    transform: translate(-10vw, -5vh) rotate(-90deg);
     border-radius: 92% 36% 49% 74% / 64% 71% 54% 69%;
   }
   to {
-    transform: translate(500px, -70vh) rotate(-360deg);
+    transform: translate(50vw, -70vh) rotate(-360deg);
     border-radius: 62% 36% 39% 74% / 44% 35% 54% 89%;
   }
 }
 
 @keyframes move1 {
   from {
-    transform: translate(-200px, -120px) rotate(-150deg);
+    transform: translate(-20vw, -12vh) rotate(-150deg);
     border-radius: 92% 36% 49% 74% / 64% 71% 54% 69%;
   }
 
   to {
-    transform: translate(-500px, 100px) rotate(-90deg);
+    transform: translate(-50vw, 10vh) rotate(-90deg);
     border-radius: 62% 36% 39% 74% / 44% 35% 54% 89%;
   }
 }
 
 @-webkit-keyframes move2{
     from {
-      transform: translate(-20px, -250px) rotate(-90deg);
+      transform: translate(-2vw, -25vh) rotate(-90deg);
       border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
     }
     to {
-      transform: translate(-20px, 250px) rotate(-10deg);
+      transform: translate(-2vw, 25vh) rotate(-10deg);
       border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
     }
   }
   
   @keyframes move2 {
     from {
-      transform: translate(-20px, -250px) rotate(-45deg);
+      transform: translate(-2vw, -25vh) rotate(-45deg);
       border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
     }
   
     to {
-      transform: translate(90px, 250px) rotate(-300deg);
+      transform: translate(9vw, 25vh) rotate(-300deg);
       border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
     }
   }
