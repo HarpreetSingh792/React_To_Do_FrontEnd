@@ -164,15 +164,21 @@ export const Navbar = () => {
               onClick={() => {
                 setDarkTheme((prevLightTheme) => !prevLightTheme);
                 darkTheme
-                ? localStorage.setItem("theme", "dark")
-                : localStorage.setItem("theme", "light");
+                  ? localStorage.setItem("theme", "dark")
+                  : localStorage.setItem("theme", "light");
                 // console.log(document.querySelector("body"))  //For debbuging purpose....
                 darkTheme
-                  ? document.querySelector("body").classList.remove("light")
-                  : document.querySelector("body").classList.add("dark");
+                  ? document
+                      .querySelector("body")
+                      .classList.remove("light")
+                  : document
+                      .querySelector("body")
+                      .classList.add("light");
                 darkTheme
                   ? document.querySelector("body").classList.add("dark")
-                  : document.querySelector("body").classList.remove("light");
+                  : document
+                      .querySelector("body")
+                      .classList.remove("dark");
               }}
             >
               {darkTheme ? <FaRegLightbulb /> : <FaLightbulb />}
