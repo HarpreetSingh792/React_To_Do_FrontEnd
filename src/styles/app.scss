@@ -1,5 +1,5 @@
 @import "features.scss";
-@import "loader.scss";
+@import "Loader.scss";
 :root {
   --primary-color: rgba(255, 255, 255, 0.4);
   --hover-light-background: #35a29f;
@@ -489,10 +489,11 @@ form {
 @media (max-width: 756px) {
   .navigation-links-hamburger {
     .slider-nav {
-      height: 87vh;
+      height: 83vh;
     }
   }
   .form-class {
+    height: 80vh;
     overflow: hidden;
     width: 100vw;
     .blob {
