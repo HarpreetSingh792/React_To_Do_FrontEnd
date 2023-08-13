@@ -74,6 +74,7 @@ $font: "Rubik", sans-serif;
   border: 2px solid $color;
   width: $width;
   height: $height;
+  min-height: $height;
   border-radius: 5px;
   display: flex;
   margin-bottom: 5px;
