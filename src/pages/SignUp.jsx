@@ -3,6 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { Context, server } from "../main";
 import { toast } from "react-hot-toast";
+import {motion} from "framer-motion";
 
 const SignUp = () => {
   const { setIsAuthenticated, isAuthenticated } = useContext(Context);
@@ -119,9 +120,11 @@ const SignUp = () => {
           />
         </section>
         <section className="btn-link">
-          <button type="submit">Sign Up</button>
+          <motion.button whileHover={{scale:0.9}} whileTap={{scale:0.9}} type="submit">Sign Up</motion.button>
           <p>or</p>
+          <motion.div whileHover={{scale:0.9}} whileTap={{scale:0.9}}>
           <Link to="/login">Already a user. Sign In</Link>
+          </motion.div>
         </section>
       </form>
     </div>

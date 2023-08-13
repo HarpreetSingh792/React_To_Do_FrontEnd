@@ -104,7 +104,7 @@ header {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  z-index: 99999999;
+  z-index: 9999;
 }
 .navbar {
   padding: 0 15px;
@@ -167,10 +167,9 @@ button > svg {
 }
 form {
   @include form;
-
+  padding-bottom: 10px;
   & > h2 {
-    transform: translateY(-30px);
-    font-size: 4rem;
+    font-size: 8vh;
     color: var(--text-color);
   }
 
@@ -365,15 +364,17 @@ form {
       }
     }
     .slider-nav {
+      transition: smooth 0.4s;
       position: fixed;
       display: grid;
       justify-content: center;
       align-items: space-between;
       top: 77px;
-      right: 0;
+      right:-700px;
       z-index: 5;
       width: 90vw;
       height: 92vh;
+      min-height: 90vh;
       background-color: var(--slide-nav-transparent);
       & > button {
         position: absolute;
@@ -421,6 +422,7 @@ form {
     display: none;
   }
   .form-class {
+    height: 87.7vh;
     overflow: hidden;
     width: 100vw;
     .blob {
@@ -436,6 +438,7 @@ form {
   }
   form {
     height: 70vh;
+    min-height: 500px;
     width: 97vw;
     input {
       width: 80vw;
@@ -495,11 +498,12 @@ form {
 @media (max-width: 756px) {
   .navigation-links-hamburger {
     .slider-nav {
+      min-height: 75vh;
       height: 77vh;
     }
   }
   .form-class {
-    height: 80vh;
+    height: 90vh;
     overflow: hidden;
     width: 100vw;
     .blob {
@@ -512,6 +516,9 @@ form {
     .blob2 {
       @include blob(250px, 250px, move2);
     }
+  }
+  form{
+    min-height: 450px;
   }
   .task-cards {
     width: 99vw;

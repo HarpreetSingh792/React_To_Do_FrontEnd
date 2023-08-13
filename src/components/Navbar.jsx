@@ -6,11 +6,15 @@ import { RxCross2 } from "react-icons/rx";
 import { Context, server } from "../main";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { motion } from "framer-motion";
 
 export const Navbar = () => {
-  const { setIsAuthenticated, isAuthenticated } = useContext(Context);
+  const { setIsAuthenticated, isAuthenticated, setToastTheme } =
+    useContext(Context);
   const [slide, setSlide] = useState(false);
-  const [darkTheme, setDarkTheme] = useState(true);
+  const [darkTheme, setDarkTheme] = useState(
+    localStorage.getItem("theme") == "light"
+  );
   const logoutHandler = async () => {
     try {
       await axios.get(`${server}/user/logout`, { withCredentials: true });
@@ -63,10 +67,13 @@ export const Navbar = () => {
             </div>
 
             {slide && (
-              <div className="slider-nav">
-                <button onClick={closeSlideHandler}>
+              <motion.div initial={{opacity:0}} animate={{x:-700,opacity:1}} transition={{ease:"easeInOut"}} className="slider-nav">
+                <motion.button
+                  whileTap={{ scale: 0.9 }}
+                  onClick={closeSlideHandler}
+                >
                   <RxCross2 />
-                </button>
+                </motion.button>
                 <div className="navigations-link">
                   <NavLink
                     to="/"
@@ -100,7 +107,8 @@ export const Navbar = () => {
                       Login
                     </NavLink>
                   )}
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.8 }}
                     onClick={() => {
                       setDarkTheme((prevLightTheme) => !prevLightTheme);
                       darkTheme
@@ -111,30 +119,29 @@ export const Navbar = () => {
                         ? document
                             .querySelector("body")
                             .classList.remove("light")
-                        : document
-                            .querySelector("body")
-                            .classList.add("light");
+                        : document.querySelector("body").classList.add("light");
                       darkTheme
                         ? document.querySelector("body").classList.add("dark")
                         : document
                             .querySelector("body")
                             .classList.remove("dark");
+                      setToastTheme(darkTheme);
                     }}
                   >
                     {darkTheme ? <FaRegLightbulb /> : <FaLightbulb />}
-                  </button>
+                  </motion.button>
                 </div>
-              </div>
+              </motion.div>
             )}
           </div>
           <div className="navigations-links">
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Home
-            </NavLink>
-            {!isAuthenticated && (
+              <NavLink 
+                to="/"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Home
+              </NavLink>
+             {!isAuthenticated && (
               <NavLink
                 to="/signup"
                 className={({ isActive }) => (isActive ? "active" : "")}
@@ -160,7 +167,8 @@ export const Navbar = () => {
                 Login
               </NavLink>
             )}
-            <button
+            <motion.button
+              whileTap={{ scale: 0.8 }}
               onClick={() => {
                 setDarkTheme((prevLightTheme) => !prevLightTheme);
                 darkTheme
@@ -168,21 +176,16 @@ export const Navbar = () => {
                   : localStorage.setItem("theme", "light");
                 // console.log(document.querySelector("body"))  //For debbuging purpose....
                 darkTheme
-                  ? document
-                      .querySelector("body")
-                      .classList.remove("light")
-                  : document
-                      .querySelector("body")
-                      .classList.add("light");
+                  ? document.querySelector("body").classList.remove("light")
+                  : document.querySelector("body").classList.add("light");
                 darkTheme
                   ? document.querySelector("body").classList.add("dark")
-                  : document
-                      .querySelector("body")
-                      .classList.remove("dark");
+                  : document.querySelector("body").classList.remove("dark");
+                setToastTheme(darkTheme);
               }}
             >
               {darkTheme ? <FaRegLightbulb /> : <FaLightbulb />}
-            </button>
+            </motion.button>
           </div>
         </nav>
       </header>

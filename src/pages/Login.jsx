@@ -4,6 +4,7 @@ import { server, Context } from "../main";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import Loader from "../components/Loader";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -31,7 +32,7 @@ const Login = () => {
       label.style.top = "14px";
       label.style.left = "14px";
       label.style.fontSize = "1rem";
-      label.style.zIndex=7;
+      label.style.zIndex = 7;
     } else {
       label.style.top = "-14px";
       label.style.left = "10px";
@@ -106,11 +107,18 @@ const Login = () => {
               />
             </section>
             <section className="btn-link">
-              <button disabled={isLoading} type="submit">
+              <motion.button
+                whileHover={{ scale: 0.9}}
+                whileTap={{ scale: 0.9}}
+                disabled={isLoading}
+                type="submit"
+              >
                 Log in
-              </button>
+              </motion.button>
               <p>or</p>
+              <motion.div whileHover={{scale:0.9}} whileTap={{scale:0.9}}>
               <Link to="/signup">Sign Up</Link>
+              </motion.div>
             </section>
           </form>
         </div>

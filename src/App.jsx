@@ -12,17 +12,20 @@ import Loader from "./components/Loader";
 
 function App() {
   const [userData,setUserData]= useState({});
-  const { setIsAuthenticated ,isLoading, setIsLoading } = useContext(Context);
+  const { setIsAuthenticated ,isLoading, setIsLoading,toastTheme,setToastTheme } = useContext(Context);
   useEffect(() => {
     const getTheme = localStorage.getItem("theme");
-    if(getTheme=='dark'){
+    if(getTheme=="dark"){
+      setToastTheme(true);
       document.querySelector("body").classList.add("dark");
       document.querySelector("body").classList.remove("light");
     }
     else{
+      setToastTheme(false);
       document.querySelector("body").classList.add("light");
       document.querySelector("body").classList.remove("dark");
     }
+
     const getProfile = async () => {
        setIsLoading(true);
       try {
@@ -39,6 +42,7 @@ function App() {
     };
     getProfile();
   }, []);
+  
   return (
     <Router>
       <Navbar />
@@ -50,7 +54,13 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/profile" element={<Profile data={userData}/>} />
       </Routes>)}
-      <Toaster />
+      <Toaster toastOptions={{
+        style:{
+          zIndex:true,
+          background:toastTheme?"black":"white",
+          color:toastTheme?"white":"black"
+        }
+      }}/>
     </Router>
   );
 }
