@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import {motion} from "framer-motion";
 
 const SignUp = () => {
-  const { setIsAuthenticated, isAuthenticated } = useContext(Context);
+  const { setIsAuthenticated, isAuthenticated ,isLoading} = useContext(Context);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -120,7 +120,7 @@ const SignUp = () => {
           />
         </section>
         <section className="btn-link">
-          <motion.button whileHover={{scale:0.9}} whileTap={{scale:0.9}} type="submit">Sign Up</motion.button>
+          <motion.button whileHover={{scale:0.9}} whileTap={{scale:0.9}} type="submit" disabled={isLoading} onClick={()=>{<Navigate to="/login"></Navigate>}}>Sign Up</motion.button>
           <p>or</p>
           <motion.div whileHover={{scale:0.9}} whileTap={{scale:0.9}}>
           <Link to="/login">Already a user. Sign In</Link>
