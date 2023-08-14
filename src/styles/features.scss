@@ -68,13 +68,14 @@ $font: "Rubik", sans-serif;
 }
 
 @mixin button($color,$width:15vw,$height:7vh) {
+  $minHeight:($height+4vh);
   cursor: pointer;
   background-color: transparent;
   outline: none;
   border: 2px solid $color;
   width: $width;
   height: $height;
-  min-height: $height;
+  min-height:$minHeight;
   border-radius: 5px;
   display: flex;
   margin-bottom: 5px;
