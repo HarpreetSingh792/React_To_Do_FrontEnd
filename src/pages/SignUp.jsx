@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import { Link, Navigate,useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { Context, server } from "../main";
 import { toast } from "react-hot-toast";
 import {motion} from "framer-motion";
 
 const SignUp = () => {
-  const { setIsAuthenticated, isAuthenticated ,isLoading} = useContext(Context);
+  const { setIsAuthenticated, isAuthenticated ,isLoading,setIsLoading} = useContext(Context);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,16 +54,16 @@ const SignUp = () => {
       );
       toast.success(data.message);
       setIsAuthenticated(true);
+      setIsLoading(false);
     } catch (err) {
-      toast.error(err.response.data.message);
+      toast.error(err.response.data?.message);
       setIsAuthenticated(false);
+      setIsLoading(false);
     }
+    
   };
-  {
-    isAuthenticated && <Navigate to="/"></Navigate>;
-  }
-  const navigate = useNavigate();
   return (
+    isAuthenticated ? <Navigate to="/"></Navigate>:
     <div className="form-class">
       <span className="blob"></span>
       <span className="blob1"></span>
@@ -121,7 +121,7 @@ const SignUp = () => {
           />
         </section>
         <section className="btn-link">
-          <motion.button whileHover={{scale:0.9}} whileTap={{scale:0.9}} type="submit" disabled={isLoading} onClick={()=>navigate("/login")}>Sign Up</motion.button>
+          <motion.button whileHover={{scale:0.9}} whileTap={{scale:0.9}} type="submit" disabled={isLoading}>Sign Up</motion.button>
           <p>or</p>
           <motion.div whileHover={{scale:0.9}} whileTap={{scale:0.9}}>
           <Link to="/login">Already a user. Sign In</Link>
