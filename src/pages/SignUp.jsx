@@ -53,13 +53,13 @@ const SignUp = () => {
           withCredentials: true,
         }
       );
+      setIsLoading(false);
       toast.success(data.message);
       setIsAuthenticated(true);
-      setIsLoading(false);
     } catch (err) {
+      setIsLoading(false);
       toast.error(err.response.data?.message);
       setIsAuthenticated(false);
-      setIsLoading(false);
     }
     
   };
