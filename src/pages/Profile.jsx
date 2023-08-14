@@ -21,7 +21,7 @@ const Profile = (data) => {
 
       <h2>{data?.data.name}</h2>
       <h4>{data?.data.email}</h4>
-      <h4>{new Date(data.data?.createdAt).toLocaleString()}</h4>
+      <h4>{new Date(data?.data.createdAt)?.toLocaleString()}</h4>
     </div>
   )
 }
