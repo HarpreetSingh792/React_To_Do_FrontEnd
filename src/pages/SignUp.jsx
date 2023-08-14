@@ -42,6 +42,7 @@ const SignUp = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const { data } = await axios.post(
         `${server}/user/register`,
         { name: name, email: email, password },
