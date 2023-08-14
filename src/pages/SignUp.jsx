@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate,useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Context, server } from "../main";
 import { toast } from "react-hot-toast";
@@ -62,6 +62,7 @@ const SignUp = () => {
   {
     isAuthenticated && <Navigate to="/"></Navigate>;
   }
+  const navigate = useNavigate();
   return (
     <div className="form-class">
       <span className="blob"></span>
@@ -120,7 +121,7 @@ const SignUp = () => {
           />
         </section>
         <section className="btn-link">
-          <motion.button whileHover={{scale:0.9}} whileTap={{scale:0.9}} type="submit" disabled={isLoading} onClick={()=>{<Navigate to="/login"></Navigate>}}>Sign Up</motion.button>
+          <motion.button whileHover={{scale:0.9}} whileTap={{scale:0.9}} type="submit" disabled={isLoading} onClick={()=>navigate("/login")}>Sign Up</motion.button>
           <p>or</p>
           <motion.div whileHover={{scale:0.9}} whileTap={{scale:0.9}}>
           <Link to="/login">Already a user. Sign In</Link>
